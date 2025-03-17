@@ -7,7 +7,7 @@ import routes from "./components/routes.jsx";
 
 const meta = document.createElement('meta');
 meta.setAttribute('name','description');
-meta.setAttribute('content','manelly67\'s exercise study project:BLOG API within the curriculum The Odin Project');
+meta.setAttribute('content','manelly67\'s exercise study project:BLOG API USER FRONTEND within the curriculum The Odin Project');
 document.head.appendChild(meta);
 const router = createBrowserRouter(routes);
 
