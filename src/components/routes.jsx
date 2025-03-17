@@ -1,4 +1,5 @@
 import App from "../App";
+import Details from "./Details";
 
 const routes = [
     {
@@ -7,6 +8,10 @@ const routes = [
       element: <App />,
   
      /*  errorElement: <ErrorPage />, */
+    },
+    {
+      path: "posts/:authorid/:postid",
+      element: <Details />,
     },
 ];
 
