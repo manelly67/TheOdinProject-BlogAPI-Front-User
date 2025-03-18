@@ -106,7 +106,7 @@ const blogdata = homepage; // para borrar luego
             </div>
             <div>
               <Link
-                to="/dashboard"
+                to="/user_view"
                 replace={true}
                 state={{ user: user, token: token }}
               >
