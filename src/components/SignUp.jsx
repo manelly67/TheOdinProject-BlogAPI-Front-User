@@ -131,9 +131,7 @@ const SignUp = () => {
         <>
           <h2> {responseData.text} </h2>
           <p> {`username: ${user.username}`} </p>
-          <div>
-            <Link to="login">LOGIN</Link>
-          </div>
+      
         </>
       )}
     </>
