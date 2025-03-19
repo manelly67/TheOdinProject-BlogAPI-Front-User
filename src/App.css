@@ -10,9 +10,6 @@
   padding: 2em;
 }
 
-.blog-content {
-  color: #68341f;
-}
 
 .blog-content > ul {
   display: flex;
