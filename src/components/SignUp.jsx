@@ -7,20 +7,19 @@ const titleDiv = document.querySelector("title");
 const url = urlAddresses.sign_up;
 
 const SignUp = () => {
-  titleDiv.textContent = 'BLOG | SIGN UP';
+  titleDiv.textContent = "BLOG | SIGN UP";
   const [responseData, setResponseData] = useState("{}");
-  
+
   const [user, setUser] = useState(undefined);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
-  
+
   const passwordRequirements =
     responseData.passwordRequirements === undefined
       ? " "
       : responseData.passwordRequirements;
-
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -35,8 +34,8 @@ const SignUp = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Accept": "*/*",
-        "Connection": "keep-alive",
+        Accept: "*/*",
+        Connection: "keep-alive",
       },
       body: JSON.stringify(userdata),
     })
@@ -53,7 +52,7 @@ const SignUp = () => {
   return (
     <>
       <Link to="/">HOME</Link>
-      {user===undefined ? (
+      {user === undefined ? (
         <>
           <h2>Sign Up Here:</h2>
           <ErrorMessage errors={responseData.errors} />
@@ -131,7 +130,6 @@ const SignUp = () => {
         <>
           <h2> {responseData.text} </h2>
           <p> {`username: ${user.username}`} </p>
-      
         </>
       )}
     </>

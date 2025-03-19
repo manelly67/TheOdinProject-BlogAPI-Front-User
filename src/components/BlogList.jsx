@@ -4,7 +4,6 @@ import { useOutletContext, useNavigate } from "react-router-dom";
 const titleDiv = document.querySelector("title");
 
 const BlogList = () => {
-  
   titleDiv.textContent = "BLOG | COMMENTS";
 
   const { responseData, urlAddresses } = useOutletContext();
@@ -41,9 +40,9 @@ const BlogList = () => {
         <h2>Read and Comment</h2>
 
         <div className="error">
-        {responseData.err !== undefined ? (
-          <p>{responseData.err.message}/ new login is required</p>
-        ) : null}
+          {responseData.err !== undefined ? (
+            <p>{responseData.err.message}/ new login is required</p>
+          ) : null}
         </div>
 
         <p style={{ color: "blue" }}>

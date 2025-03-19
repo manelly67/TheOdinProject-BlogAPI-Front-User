@@ -1,27 +1,16 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
-import { useOutletContext, useNavigate } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 
 const titleDiv = document.querySelector("title");
 
 const MyComments = () => {
   titleDiv.textContent = "BLOG | MY COMMENTS";
 
-  const {
-    user,
-    token,
-    responseData,
-    setResponseData,
-    deleteComment,
-    urlAddresses,
-  } = useOutletContext();
+  const { user, token, responseData, deleteComment, urlAddresses } =
+    useOutletContext();
 
-  console.log(user);
-  const navigate = useNavigate();
   const mycomments = user === undefined ? null : user.comments;
-
- 
   const [blogdata, setBlogdata] = useState("{}");
-  
   const allPosts = useMemo(() => {
     return blogdata.allPosts !== undefined ? blogdata.allPosts : null;
   }, [blogdata]);
@@ -45,12 +34,10 @@ const MyComments = () => {
   });
 
   function findPostTitle(allPosts, postid) {
-    console.log("function");
-    console.log(allPosts);
-    console.log(postid);
-    const post = allPosts.filter((e) => e.id === postid);
-    console.log(post);
-    return post[0].title;
+    if (allPosts) {
+      const post = allPosts.filter((e) => e.id === postid);
+      return post[0].title.slice(0, 100);
+    }
   }
 
   return (
@@ -61,6 +48,11 @@ const MyComments = () => {
         ) : null}
       </div>
 
+      <p style={{ color: "blue" }}>
+        {" "}
+        {responseData.text === undefined ? null : responseData.text}{" "}
+      </p>
+
       <h3>COMMENTED BY: {user.username}</h3>
       <div className="blog-content">
         {!mycomments ? (
@@ -70,26 +62,25 @@ const MyComments = () => {
             {mycomments.map((comment) => {
               return (
                 <li key={comment.id}>
-                  
                   <p style={{ width: "200px" }}>
                     {comment.text.slice(0, 100)}...
                   </p>
                   <p>
-                  {new Date(comment.createdAt).toLocaleString("es-US", {
-                    timeZone: "America/Guayaquil",
-                    dateStyle: "medium",
-                  })}
+                    {new Date(comment.createdAt).toLocaleString("es-US", {
+                      timeZone: "America/Guayaquil",
+                      dateStyle: "medium",
+                    })}
                   </p>
                   <p style={{ width: "200px" }}>
-                    ...{findPostTitle(allPosts,comment.postAboutId).slice(0,100)}...
+                    ...{findPostTitle(allPosts, comment.postAboutId)}...
                   </p>
-                  
+
                   <button
-                        style={{ height: "60px" }}
-                        onClick={() => {
-                            const url_delete_comment = `${urlAddresses.comments}/${comment.postAboutId}/${comment.id}`;
-                            deleteComment(url_delete_comment, token);
-                          }}
+                    style={{ height: "60px" }}
+                    onClick={() => {
+                      const url_delete_comment = `${urlAddresses.comments}/${comment.postAboutId}/${comment.id}`;
+                      deleteComment(url_delete_comment, token);
+                    }}
                   >
                     DELETE
                   </button>

@@ -2,8 +2,6 @@ import { useState, useEffect, useMemo, useCallback } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { urlAddresses } from "./assets/urlAddresses";
 
-import { homepage } from "./mock_data"; // para borrar luego
-
 import "./App.css";
 
 const titleDiv = document.querySelector("title");
@@ -15,10 +13,7 @@ function App() {
   const initialData = "{}";
   const navigate = useNavigate();
 
-const blogdata = homepage; // para borrar luego
-
-  /* const [blogdata, setBlogdata] = useState(initialData);
-   */
+  const [blogdata, setBlogdata] = useState(initialData);
 
   const allPosts = useMemo(() => {
     return blogdata.allPosts;
@@ -33,7 +28,7 @@ const blogdata = homepage; // para borrar luego
 
   const userlogin = token === null ? false : true;
 
-  /* useEffect(() => {
+  useEffect(() => {
     if (!allPosts) {
       getData();
     }
@@ -49,7 +44,7 @@ const blogdata = homepage; // para borrar luego
       alert("Something was wrong. try again later");
       console.log(error);
     }
-  } */
+  }
 
   const refreshPosts = useCallback(async () => {
     fetch(url_mywork, {

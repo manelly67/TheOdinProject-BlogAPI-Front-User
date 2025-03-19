@@ -81,7 +81,7 @@ const UserView = () => {
       .then((data) => {
         setResponseData(data);
         refreshPosts();
-        navigate("/user_view");
+        navigate("/user_view/mycomments");
       })
       .catch((err) => {
         console.log(err);
@@ -133,11 +133,6 @@ const UserView = () => {
               <p>{responseData.err.message}/ new login is required</p>
             ) : null}
           </div>
-
-          <p style={{ color: "blue" }}>
-            {" "}
-            {responseData.text === undefined ? null : responseData.text}{" "}
-          </p>
 
           <div>
             <Outlet

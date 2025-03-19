@@ -14,7 +14,6 @@ const PostToComment = () => {
     responseData,
     setResponseData,
     refreshPosts,
-    deleteComment,
     urlAddresses,
   } = useOutletContext();
 
@@ -127,7 +126,6 @@ const PostToComment = () => {
                                     }
                                   )}
                                 </p>
-
                               </li>
                             );
                           })}

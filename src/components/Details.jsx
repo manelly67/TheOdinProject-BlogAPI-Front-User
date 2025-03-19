@@ -19,7 +19,6 @@ const Details = () => {
     try {
       const response = await fetch(url);
       const responseData = await response.json();
-      console.log(responseData);
       setPostd(responseData);
     } catch (error) {
       alert("Something was wrong. try again later");

@@ -7,8 +7,8 @@ const url = urlAddresses.logout;
 
 const Logout = () => {
   const [responseData, setResponseData] = useState("{}");
- 
-  titleDiv.textContent = 'BLOG | LOGOUT';
+
+  titleDiv.textContent = "BLOG | LOGOUT";
 
   useEffect(() => {
     switch (responseData === "{}") {
